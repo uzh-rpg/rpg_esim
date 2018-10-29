@@ -1,0 +1,15 @@
+<launch>
+
+  <arg name="config" />
+
+  <!-- Event camera simulator -->
+  <node name="esim_node" pkg="esim_ros" type="esim_node" args="
+    --v=1
+    --vmodule=data_provider_from_folder=10
+    --flagfile=$(find esim_ros)/$(arg config)
+    " output="screen"/>
+
+  <include file="$(find esim_ros)/launch/visualization.launch" />
+
+
+</launch>

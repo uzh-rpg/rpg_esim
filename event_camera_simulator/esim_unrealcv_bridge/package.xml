@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>esim_unrealcv_bridge</name>
+  <version>0.0.0</version>
+  <description>C++ client for UnrealCV.</description>
+
+  <maintainer email="rptheiler@gmail.com">Raffael Theiler</maintainer>
+  <maintainer email="rebecq@ifi.uzh.ch">Henri Rebecq</maintainer>
+
+  <license>GPLv3</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>catkin_simple</buildtool_depend>
+
+  <depend>glog_catkin</depend>
+
+</package>

@@ -1,0 +1,27 @@
+<launch>
+
+  <!-- Visualization -->
+  <node name="dvs_renderer" pkg="dvs_renderer" type="dvs_renderer" output="screen" required="false">
+    <remap from="events" to="/cam0/events" />
+    <remap from="image" to="/cam0/image_corrupted" />
+    <remap from="dvs_rendering" to="dvs_rendering" />
+  </node>
+
+  <node name="optic_flow_viz" pkg="esim_visualization" type="optic_flow_converter.py" output="screen" required="false">
+    <param name="arrows_step" value="7" />
+
+    <param name="arrows_scale" value="0.07" />
+    <param name="arrows_upsample_factor" value="1" />
+    <param name="publish_rate" value="100" />
+
+    <remap from="flow" to="/cam0/optic_flow" />
+  </node>
+
+  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server" output="screen" required="false">
+    <param name="target_frame_name" value="map"/>
+    <param name="source_frame_name" value="cam0"/>
+    <param name="trajectory_publish_rate" value="15"/>
+    <param name="trajectory_update_rate" value="15"/>
+  </node>
+
+</launch>

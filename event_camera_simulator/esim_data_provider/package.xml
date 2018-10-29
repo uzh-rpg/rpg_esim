@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>esim_data_provider</name>
+  <version>0.0.0</version>
+  <description>Data providers for the event camera simulator.</description>
+
+  <maintainer email="rebecq@ifi.uzh.ch">Henri Rebecq</maintainer>
+
+  <license>GPLv3</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>catkin_simple</buildtool_depend>
+
+  <depend>esim_common</depend>
+  <depend>esim_rendering</depend>
+  <depend>imp_planar_renderer</depend>
+  <depend>imp_panorama_renderer</depend>
+  <depend>imp_opengl_renderer</depend>
+  <depend>imp_unrealcv_renderer</depend>
+  <depend>imp_multi_objects_2d</depend>
+  <depend>esim_trajectory</depend>
+  <depend>ze_vi_simulation</depend>
+  <depend>gflags_catkin</depend>
+  <depend>glog_catkin</depend>
+
+</package>

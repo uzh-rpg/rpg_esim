@@ -1,0 +1,27 @@
+label: "simulated_camera"
+id: 433585ebda8d1431223927a14788a127
+cameras:
+- camera:
+    label: dvs0
+    id: a0fba5412e961934d842d3a2a78e5cba
+    line-delay-nanoseconds: 0
+    image_height: 180
+    image_width: 240
+    type: pinhole
+    intrinsics:
+      cols: 1
+      rows: 4
+      data: [198.245521288, 198.277025706, 142.064861206, 100.903484508]
+    distortion:
+      type: equidistant
+      parameters:
+        cols: 1
+        rows: 4
+        data: [-0.0506755889541, 0.0456313630037, -0.0825742639337, 0.0557104403236]
+  T_B_C:
+    cols: 4
+    rows: 4
+    data: [1, 0, 0,  0,
+           0, -1, 0, 0,
+           0, 0, -1, 0,
+           0, 0, 0, 1]

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>imp_unrealcv_renderer</name>
+  <version>0.0.0</version>
+  <description>Implementation of rendering engine based on Unreal Engine.</description>
+
+  <maintainer email="rptheiler@gmail.com">Raffael Theiler</maintainer>
+  <maintainer email="rebecq@ifi.uzh.ch">Henri Rebecq</maintainer>
+
+  <license>GPLv3</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>catkin_simple</buildtool_depend>
+
+  <depend>esim_common</depend>
+  <depend>esim_rendering</depend>
+  <depend>esim_unrealcv_bridge</depend>
+  <depend>gflags_catkin</depend>
+  <depend>glog_catkin</depend>
+
+</package>

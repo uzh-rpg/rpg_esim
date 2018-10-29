@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>esim_ros</name>
+  <version>0.0.0</version>
+  <description>The event_camera_simulator package</description>
+
+  <maintainer email="rebecq@ifi.uzh.ch">Henri Rebecq</maintainer>
+
+  <license>GPLv3</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>catkin_simple</buildtool_depend>
+
+  <depend>esim_common</depend>
+  <depend>esim</depend>
+  <depend>esim_data_provider</depend>
+  <depend>esim_visualization</depend>
+  <depend>gflags_catkin</depend>
+  <depend>glog_catkin</depend>
+  <depend>dvs_renderer_advanced</depend>
+
+</package>

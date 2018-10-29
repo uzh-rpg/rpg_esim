@@ -1,0 +1,56 @@
+# Blender MTL File: 'American_Football_edited.blend'
+# Material Count: 5
+
+newmtl FbBrown
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.463830 0.193594 0.054864
+Ks 0.300000 0.300000 0.300000
+Ke 0.008000 0.003339 0.000946
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ColorMap.png
+map_Bump NormalMap.png
+
+newmtl FbBrown_FB_UV
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.463830 0.193594 0.054864
+Ks 0.300000 0.300000 0.300000
+Ke 0.008000 0.003339 0.000946
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump NormalMap.png
+map_Kd ColorMap.png
+
+newmtl FbWhite
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.793498 0.766269 0.800000
+Ks 0.300000 0.300000 0.300000
+Ke 0.009919 0.009578 0.010000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ColorMap.png
+map_Bump NormalMap.png
+
+newmtl Material.003
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.145390 0.145390 0.145390
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl None
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>esim_msgs</name>
+  <version>0.0.0</version>
+  <description>ROS message definitions for the event camera simulator.</description>
+  <maintainer email="rebecq@ifi.uzh.ch">Henri Rebecq</maintainer>
+  <license>GNU GPL</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>catkin_simple</buildtool_depend>
+
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+</package>

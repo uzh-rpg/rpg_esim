@@ -1,0 +1,4 @@
+*.txt.user
+esim_ros/scripts/exp_*
+*.swp
+*.autosave

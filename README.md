@@ -15,10 +15,10 @@ You can find a pdf of the paper [here](http://rpg.ifi.uzh.ch/docs/CORL18_Rebecq.
 ## Features
 
 - Accurate event simulation, guaranteed by the tight integration between the rendering engine and the event simulator
-- IMU simulation
+- Inertial Measurement Unit (IMU) simulation
 - Support for multi-camera systems
 - Ground truth camera poses, IMU biases, angular/linear velocities, depth maps, and optic flow maps
-- Support for camera distortion
+- Support for camera distortion (only planar and panoramic renderers)
 - Different C+/C- contrast thresholds
 - Basic noise simulation for event cameras (based on additive Gaussian noise on the contrast threshold)
 - Motion blur simulation

@@ -6,7 +6,7 @@
 
   <maintainer email="rebecq@ifi.uzh.ch">Henri Rebecq</maintainer>
 
-  <license>GPLv3</license>
+  <license>MIT</license>
 
   <buildtool_depend>catkin</buildtool_depend>
   <buildtool_depend>catkin_simple</buildtool_depend>

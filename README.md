@@ -26,11 +26,11 @@ You can find a pdf of the paper [here](http://rpg.ifi.uzh.ch/docs/CORL18_Rebecq.
 
 ## Install
 
-Installation instructions can be found in [our wiki](https://github.com/uzh-rpg/rpg_event_camera_simulator/wiki/Installation).
+Installation instructions can be found in [our wiki](https://github.com/uzh-rpg/rpg_esim/wiki/Installation).
 
 ## Run
 
-Specific instructions to run the simulator depending on the chosen rendering engine can be found in [our wiki](https://github.com/uzh-rpg/rpg_event_camera_simulator/wiki).
+Specific instructions to run the simulator depending on the chosen rendering engine can be found in [our wiki](https://github.com/uzh-rpg/rpg_esim/wiki).
 
 ## Acknowledgements
 

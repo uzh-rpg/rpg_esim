@@ -1,3 +1,4 @@
+// This file was adapted from the ze_oss project: https://github.com/zurich-eye/ze_oss/blob/master/ze_data_provider/include/ze/data_provider/data_provider_rosbag.hpp
 // Copyright (C) ETH Zurich, Wyss Zurich, Zurich Eye - All Rights Reserved
 
 #pragma once

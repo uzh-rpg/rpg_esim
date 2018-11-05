@@ -1,5 +1,7 @@
 # ESIM: an Open Event Camera Simulator
 
+[![ESIM: an Open Event Camera Simulator](http://rpg.ifi.uzh.ch/esim/img/youtube_preview.png)](https://youtu.be/ytKOIX_2clo)
+
 This is the code for the 2018 CoRL paper **ESIM: an Open Event Camera Simulator** by [Henri Rebecq](http://henri.rebecq.fr), Daniel Gehrig and [Davide Scaramuzza](http://rpg.ifi.uzh.ch/people_scaramuzza.html):
 ```bibtex
 @Article{Rebecq18corl,

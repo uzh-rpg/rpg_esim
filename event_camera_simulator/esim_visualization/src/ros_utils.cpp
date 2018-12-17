@@ -162,7 +162,12 @@ void cameraToMsg(const ze::Camera::Ptr& camera, Time t, sensor_msgs::CameraInfoP
 
   msg->K = K_vec;
   msg->D = D_vec;
-  // TODO: Add R and P
+  msg->P = {K(0,0), 0,      K(0,2), 0,
+            0,      K(1,1), K(1,2), 0,
+            0,      0,      1,      0};
+  msg->R = {1, 0, 0,
+            0, 1, 0,
+            0, 0, 1};
 }
 
 

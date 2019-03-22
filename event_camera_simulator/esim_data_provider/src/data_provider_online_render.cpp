@@ -43,7 +43,7 @@ DataProviderOnlineMoving3DCameraRig::DataProviderOnlineMoving3DCameraRig(ze::rea
   // Compute Field-of-Views for information
   const ze::Camera::Ptr camera = camera_rig_->atShared(0);
   const int width = camera->width();
-  const int height = camera->height(); 
+  const int height = camera->height();
 
   const ze::real_t horizontal_fov =
       180.0 / CV_PI *
@@ -365,7 +365,7 @@ bool DataProviderOnlineMoving3DCameraRig::spinOnce()
     sampleImu();
     setImuUpdated();
   }
-  else if(next_t_flow_ < next_t_imu && next_t_flow_ < next_t_imu)
+  else if(next_t_flow_ < next_t_imu && next_t_flow_ < next_t_frame)
   {
     VLOG(2) << "Sample frame (because of optic flow)";
     t_ = next_t_flow_;

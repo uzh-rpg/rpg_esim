@@ -18,6 +18,8 @@ void Simulator::dataProviderCallback(const SimulatorData &sim_data)
 {
   CHECK_EQ(event_simulators_.size(), num_cameras_);
 
+  bool camera_simulator_success;
+
   if(sim_data.images_updated)
   {
     EventsVector events(num_cameras_);
@@ -36,14 +38,14 @@ void Simulator::dataProviderCallback(const SimulatorData &sim_data)
           corrupted_camera_images_[i]->setTo(0.);
         }
 
-        camera_simulators_[i].imageCallback(*sim_data.images[i], time, corrupted_camera_images_[i]);
+        camera_simulator_success = camera_simulators_[i].imageCallback(*sim_data.images[i], time, corrupted_camera_images_[i]);
       }
     }
 
     // publish the simulation data + events
     {
       auto t = timers_event_simulator_[TimerEventSimulator::visualization].timeScope();
-      publishData(sim_data, events, corrupted_camera_images_);
+      publishData(sim_data, events, camera_simulator_success, corrupted_camera_images_);
     }
   }
   else
@@ -51,13 +53,14 @@ void Simulator::dataProviderCallback(const SimulatorData &sim_data)
     {
       // just forward the simulation data to the publisher
       auto t = timers_event_simulator_[TimerEventSimulator::visualization].timeScope();
-      publishData(sim_data, {}, corrupted_camera_images_);
+      publishData(sim_data, {}, camera_simulator_success, corrupted_camera_images_);
     }
   }
 }
 
 void Simulator::publishData(const SimulatorData& sim_data,
                             const EventsVector& events,
+                            bool camera_simulator_success,
                             const ImagePtrVector& camera_images)
 {
   if(publishers_.empty())
@@ -106,9 +109,12 @@ void Simulator::publishData(const SimulatorData& sim_data,
     {
       publisher->imageCallback(sim_data.images, time);
 
-      // the images should be timestamped at mid-exposure (unless it is not possible)
-      const Time mid_exposure_time = (time >= 0.5 * exposure_time_) ? time - 0.5 * exposure_time_ : time;
-      publisher->imageCorruptedCallback(camera_images, mid_exposure_time);
+      if(camera_simulator_success && time >= exposure_time_)
+      {
+        // the images should be timestamped at mid-exposure
+        const Time mid_exposure_time = time - 0.5 * exposure_time_;
+        publisher->imageCorruptedCallback(camera_images, mid_exposure_time);
+      }
     }
   }
   if(sim_data.depthmaps_updated)

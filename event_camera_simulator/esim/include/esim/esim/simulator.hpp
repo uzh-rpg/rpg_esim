@@ -42,6 +42,7 @@ public:
 
   void publishData(const SimulatorData &sim_data,
                    const EventsVector &events,
+                   bool camera_simulator_success,
                    const ImagePtrVector &camera_images);
 
 private:

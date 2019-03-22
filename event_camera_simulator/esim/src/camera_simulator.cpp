@@ -30,7 +30,7 @@ void ImageBuffer::addImage(Time t, const Image& img)
 
 
 bool CameraSimulator::imageCallback(const Image &img, Time time,
-                                         const ImagePtr& camera_image)
+                                    const ImagePtr& camera_image)
 {
   CHECK(camera_image);
   CHECK_EQ(camera_image->size(), img.size());

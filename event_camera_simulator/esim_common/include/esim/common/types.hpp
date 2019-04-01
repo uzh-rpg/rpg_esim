@@ -41,13 +41,16 @@ using uint16_t = ze::uint16_t;
 using Time = ze::int64_t;
 using Duration = ze::uint64_t;
 using Image = cv::Mat_<ImageFloatType>;
+using ColorImage = cv::Mat_<cv::Vec<ImageFloatType, 3>>;
 using ImagePtr = std::shared_ptr<Image>;
+using ColorImagePtr = std::shared_ptr<ColorImage>;
 using Depthmap = cv::Mat_<ImageFloatType>;
 using OpticFlow = cv::Mat_< cv::Vec<ImageFloatType, 2> >;
 using OpticFlowPtr = std::shared_ptr<OpticFlow>;
 using DepthmapPtr = std::shared_ptr<Depthmap>;
 
 using ImagePtrVector = std::vector<ImagePtr>;
+using ColorImagePtrVector = std::vector<ColorImagePtr>;
 using DepthmapPtrVector = std::vector<DepthmapPtr>;
 using OpticFlowPtrVector = std::vector<OpticFlowPtr>;
 
@@ -103,7 +106,7 @@ struct SimulatorData
   Time timestamp;
 
   //! Camera images.
-  ImagePtrVector images;
+  ColorImagePtrVector images;
 
   //! Depth maps.
   DepthmapPtrVector depthmaps;

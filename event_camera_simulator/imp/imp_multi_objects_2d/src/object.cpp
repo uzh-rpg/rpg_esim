@@ -107,21 +107,25 @@ void Object::draw(Time t, bool is_first_layer)
 
 void getIntensityAndAlpha(const cv::Mat& image,
                           int x, int y,
-                          ImageFloatType* intensity,
-                          ImageFloatType* alpha)
+                          cv::Vec<ImageFloatType, 3> *intensity,
+                          ImageFloatType *alpha)
 {
   CHECK(image.type() == CV_8UC3 || image.type() == CV_8UC4);
 
   if(image.type() == CV_8UC3)
   {
     cv::Vec3b val = image.at<cv::Vec3b>(y,x);
-    *intensity = bgrToGrayscale(val[0], val[1], val[2]) / 255.;
+    *intensity = cv::Vec<ImageFloatType, 3>(static_cast<ImageFloatType>(val[0]),
+                                            static_cast<ImageFloatType>(val[1]),
+                                            static_cast<ImageFloatType>(val[2])) / 255.;
     *alpha = 1.;
   }
   else
   {
     cv::Vec4b val = image.at<cv::Vec4b>(y,x);
-    *intensity = bgrToGrayscale(val[0], val[1], val[2]) / 255.;
+    *intensity = cv::Vec<ImageFloatType, 3>(static_cast<ImageFloatType>(val[0]),
+                                            static_cast<ImageFloatType>(val[1]),
+                                            static_cast<ImageFloatType>(val[2])) / 255.;
     *alpha = static_cast<ImageFloatType>(val[3]) / 255.;
   }
 }

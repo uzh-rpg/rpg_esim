@@ -73,7 +73,7 @@ bool loadPreprocessedImage(const std::string& path_to_img, cv::Mat* img)
 {
   CHECK(img);
   VLOG(1) << "Loading texture file from file: " << FLAGS_renderer_texture << ".";
-  *img = cv::imread(path_to_img, 0);
+  *img = cv::imread(path_to_img);
   if(!img->data)
   {
     LOG(FATAL) << "Could not open image at: " << FLAGS_renderer_texture << ".";

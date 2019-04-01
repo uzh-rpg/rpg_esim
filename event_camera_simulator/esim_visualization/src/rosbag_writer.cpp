@@ -86,7 +86,7 @@ void RosbagWriter::pointcloudCallback(const PointCloudVector& pointclouds, Time 
   last_published_pointcloud_time_ = t;
 }
 
-void RosbagWriter::imageCallback(const ImagePtrVector& images, Time t)
+void RosbagWriter::imageCallback(const ColorImagePtrVector& images, Time t)
 {
   for(size_t i=0; i<num_cameras_; ++i)
   {
@@ -110,7 +110,7 @@ void RosbagWriter::imageCallback(const ImagePtrVector& images, Time t)
   last_published_image_time_ = t;
 }
 
-void RosbagWriter::imageCorruptedCallback(const ImagePtrVector& images_corrupted, Time t)
+void RosbagWriter::imageCorruptedCallback(const ColorImagePtrVector& images_corrupted, Time t)
 {
   for(size_t i=0; i<num_cameras_; ++i)
   {

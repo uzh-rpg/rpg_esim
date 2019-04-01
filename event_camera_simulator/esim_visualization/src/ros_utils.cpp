@@ -26,11 +26,11 @@ void pointCloudToMsg(const PointCloud& pointcloud, const std::string& frame_id, 
   pcl_conversions::toPCL(toRosTime(t), msg->header.stamp);
 }
 
-void imageToMsg(const Image& image, Time t, sensor_msgs::ImagePtr& msg)
+void imageToMsg(const ColorImage& image, Time t, sensor_msgs::ImagePtr& msg)
 {
   cv_bridge::CvImage cv_image;
   image.convertTo(cv_image.image, CV_8U, 255.0);
-  cv_image.encoding = "mono8";
+  cv_image.encoding = "bgr8";
   cv_image.header.stamp = toRosTime(t);
   msg = cv_image.toImageMsg();
 }

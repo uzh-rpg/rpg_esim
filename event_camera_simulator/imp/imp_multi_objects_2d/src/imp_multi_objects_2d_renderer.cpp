@@ -78,7 +78,7 @@ MultiObject2DRenderer::~MultiObject2DRenderer()
 }
 
 bool MultiObject2DRenderer::render(const Time t,
-                                   const ImagePtr& out_image,
+                                   const ColorImagePtr& out_image,
                                    const OpticFlowPtr& optic_flow_map) const {
 
   if(ze::nanosecToSecTrunc(t) > tmax_)
@@ -102,7 +102,7 @@ bool MultiObject2DRenderer::render(const Time t,
   // start from bottom image, merge it with the upper one
   // then go one level up, merge the resulting image with the upper one
   // and so on...
-  ImageFloatType intensity;
+  cv::Vec<ImageFloatType, 3> intensity;
   ImageFloatType alpha;
 
   for(int i=0; i<objects_.size(); ++i)
@@ -188,11 +188,12 @@ void MultiObject2DRenderer::outputGroundTruthData()
   }
 
 
-  ImageFloatType intensity, alpha;
+  cv::Vec<ImageFloatType, 3> intensity;
+  ImageFloatType alpha;
 
   // First, merge the displacement map from 0 to 1
   OpticFlow displacement_map_10(height_, width_); // displacement map from 0 to 1
-  Image image0(height_, width_);
+  ColorImage image0(height_, width_);
   image0.setTo(0);
   for(int i=0; i<objects_.size(); ++i)
   {
@@ -219,7 +220,7 @@ void MultiObject2DRenderer::outputGroundTruthData()
 
   // Second, create displacement map from 1 to 0
   OpticFlow displacement_map_01(height_, width_); // displacement map from 1 to 0
-  Image image1(height_, width_);
+  ColorImage image1(height_, width_);
   image1.setTo(0);
   for(int i=0; i<objects_.size(); ++i)
   {

@@ -17,7 +17,7 @@ public:
   //! Render an image + optic flow map at a given time t.
   //! The rendering engine takes care of generating the camera trajectory, etc.
   virtual bool render(const Time t,
-                      const ImagePtr& out_image,
+                      const ColorImagePtr& out_image,
                       const OpticFlowPtr& optic_flow_map) const = 0;
 
   //! Get the height of the image plane

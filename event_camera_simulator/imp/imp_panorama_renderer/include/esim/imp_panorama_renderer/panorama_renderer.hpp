@@ -10,15 +10,15 @@ class PanoramaRenderer : public Renderer
 public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
-  PanoramaRenderer(const Image& texture,
+  PanoramaRenderer(const ColorImage& texture,
                    const Transformation::Rotation& R_W_P);
 
   ~PanoramaRenderer();
 
   //! Render image and depth map for a given camera pose
-  virtual void render(const Transformation& T_W_C, const ImagePtr &out_image, const DepthmapPtr &out_depthmap) const;
+  virtual void render(const Transformation& T_W_C, const ColorImagePtr &out_image, const DepthmapPtr &out_depthmap) const;
 
-  void render(const Transformation& T_W_C, const std::vector<Transformation>& T_W_OBJ, const ImagePtr &out_image, const DepthmapPtr &out_depthmap) const override
+  void render(const Transformation& T_W_C, const std::vector<Transformation>& T_W_OBJ, const ColorImagePtr &out_image, const DepthmapPtr &out_depthmap) const override
   {
     render(T_W_C, out_image, out_depthmap);
   }
@@ -34,7 +34,7 @@ protected:
   void projectToPanorama(const Eigen::Ref<const ze::Bearing>& f, ze::Keypoint* keypoint) const;
 
   // Texture mapped on the plane
-  Image texture_;
+  ColorImage texture_;
   Transformation::Rotation R_W_P_;
 
   // Intrinsic parameters of the panorama camera

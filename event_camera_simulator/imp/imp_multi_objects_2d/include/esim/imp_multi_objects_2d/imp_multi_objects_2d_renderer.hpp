@@ -16,7 +16,7 @@ public:
   ~MultiObject2DRenderer();
 
   virtual bool render(const Time t,
-                      const ImagePtr& out_image,
+                      const ColorImagePtr& out_image,
                       const OpticFlowPtr& optic_flow_map) const;
 
   virtual int getWidth() const { return width_; }

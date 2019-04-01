@@ -36,7 +36,7 @@ inline ros::Time toRosTime(Time t)
 
 void pointCloudToMsg(const PointCloud& pointcloud, const std::string& frame_id, Time t,pcl::PointCloud<pcl::PointXYZRGB>::Ptr& msg);
 
-void imageToMsg(const Image& image, Time t, sensor_msgs::ImagePtr& msg);
+void imageToMsg(const ColorImage& image, Time t, sensor_msgs::ImagePtr& msg);
 
 void depthmapToMsg(const Depthmap& depthmap, Time t, sensor_msgs::ImagePtr& msg);
 

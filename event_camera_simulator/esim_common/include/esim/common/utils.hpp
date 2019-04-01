@@ -24,9 +24,13 @@ PointCloud eventsToPointCloud(const Events& events, const Depthmap& depthmap, co
 
 FloatType maxMagnitudeOpticFlow(const OpticFlowPtr& flow);
 
+FloatType maxPredictedAbsBrightnessChange(const ColorImagePtr& I, const OpticFlowPtr& flow);
 FloatType maxPredictedAbsBrightnessChange(const ImagePtr& I, const OpticFlowPtr& flow);
 
+void gaussianBlur(ColorImagePtr& I, FloatType sigma);
 void gaussianBlur(ImagePtr& I, FloatType sigma);
+
+void colorImageToGrayscaleBayer(const ColorImage& img, Image* bayered_img);
 
 // Helper class to compute optic flow from a twist vector and depth map
 // Precomputes a lookup table for pixel -> bearing vector correspondences

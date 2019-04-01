@@ -82,7 +82,7 @@ DataProviderOnlineMoving3DCameraRig::DataProviderOnlineMoving3DCameraRig(ze::rea
     const cv::Size size = cv::Size(camera_rig_->at(i).width(),
                                    camera_rig_->at(i).height());
 
-    sim_data_.images.emplace_back(ImagePtr(new Image(size)));
+    sim_data_.images.emplace_back(ColorImagePtr(new ColorImage(size)));
     sim_data_.depthmaps.emplace_back(DepthmapPtr(new Depthmap(size)));
     sim_data_.optic_flows.emplace_back(OpticFlowPtr(new OpticFlow(size)));
 

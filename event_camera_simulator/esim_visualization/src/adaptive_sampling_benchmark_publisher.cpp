@@ -71,14 +71,14 @@ AdaptiveSamplingBenchmarkPublisher::~AdaptiveSamplingBenchmarkPublisher()
   optic_flows_file_.close();
 }
 
-void AdaptiveSamplingBenchmarkPublisher::imageCallback(const ImagePtrVector& images, Time t)
+void AdaptiveSamplingBenchmarkPublisher::imageCallback(const ColorImagePtrVector& images, Time t)
 {
   CHECK_EQ(images.size(), 1);
   images_file_ << t << std::endl;
 
-  ImagePtr img = images[0];
+  ColorImagePtr img = images[0];
   cv::Mat img_8bit;
-  img->convertTo(img_8bit, CV_8U, 255);
+  img->convertTo(img_8bit, CV_8UC3, 255);
 
   if(image_index_ == 0)
   {

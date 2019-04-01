@@ -13,23 +13,23 @@ public:
 
   struct ImageData
   {
-    ImageData(Image img, Time stamp, Duration exposure_time)
+    ImageData(ColorImage img, Time stamp, Duration exposure_time)
       : image(img),
         stamp(stamp),
         exposure_time(exposure_time) {}
 
-    Image image;
+    ColorImage image;
     Time stamp;
     Duration exposure_time; // timestamp since last image (0 if this is the first image)
   };
 
-  using ExposureImage = std::pair<Duration, Image>;
+  using ExposureImage = std::pair<Duration, ColorImage>;
 
   // Rolling image buffer of mazimum size 'buffer_size_ns'.
   ImageBuffer(Duration buffer_size_ns)
     : buffer_size_ns_(buffer_size_ns) {}
 
-  void addImage(Time t, const Image& img);
+  void addImage(Time t, const ColorImage& img);
 
   std::deque<ImageData> getRawBuffer() const { return data_; }
 
@@ -61,8 +61,8 @@ public:
     buffer_.reset(new ImageBuffer(exposure_time_));
   }
 
-  bool imageCallback(const Image& img, Time time,
-                     const ImagePtr &camera_image);
+  bool imageCallback(const ColorImage& img, Time time,
+                     const ColorImagePtr &camera_image);
 
 private:
   ImageBuffer::Ptr buffer_;

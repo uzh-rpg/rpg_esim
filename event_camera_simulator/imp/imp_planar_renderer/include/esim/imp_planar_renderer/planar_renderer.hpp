@@ -10,7 +10,7 @@ class PlanarRenderer : public Renderer
 public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
-  PlanarRenderer(const Image& texture,
+  PlanarRenderer(const ColorImage& texture,
                  const Camera::Ptr& cam_src,
                  const Transformation &T_W_P,
                  FloatType z_min,
@@ -20,8 +20,8 @@ public:
   ~PlanarRenderer();
 
   //! Render image and depth map for a given camera pose
-  virtual void render(const Transformation& T_W_C, const ImagePtr &out_image, const DepthmapPtr &out_depthmap) const;
-  void render(const Transformation& T_W_C, const std::vector<Transformation>& T_W_OBJ, const ImagePtr &out_image, const DepthmapPtr &out_depthmap) const override
+  virtual void render(const Transformation& T_W_C, const ColorImagePtr &out_image, const DepthmapPtr &out_depthmap) const;
+  void render(const Transformation& T_W_C, const std::vector<Transformation>& T_W_OBJ, const ColorImagePtr &out_image, const DepthmapPtr &out_depthmap) const override
   {
       render(T_W_C, out_image, out_depthmap);
   }
@@ -36,7 +36,7 @@ protected:
   void precomputePixelToBearingLookupTable();
 
   // Texture mapped on the plane
-  Image texture_;
+  ColorImage texture_;
   Camera::Ptr cam_src_;
   CalibrationMatrix K_src_, K_src_inv_;
 

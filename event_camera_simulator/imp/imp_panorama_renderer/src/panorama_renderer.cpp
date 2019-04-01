@@ -8,7 +8,7 @@
 
 namespace event_camera_simulator {
 
-PanoramaRenderer::PanoramaRenderer(const Image& texture,
+PanoramaRenderer::PanoramaRenderer(const ColorImage& texture,
                                    const Transformation::Rotation &R_W_P)
   : texture_(texture),
     R_W_P_(R_W_P)
@@ -78,7 +78,7 @@ void PanoramaRenderer::projectToPanorama(const Eigen::Ref<const ze::Bearing>& f,
 }
 
 
-void PanoramaRenderer::render(const Transformation& T_W_C, const ImagePtr& out_image, const DepthmapPtr& out_depthmap) const
+void PanoramaRenderer::render(const Transformation& T_W_C, const ColorImagePtr& out_image, const DepthmapPtr& out_depthmap) const
 {
   CHECK_EQ(out_image->rows, camera_->height());
   CHECK_EQ(out_image->cols, camera_->width());

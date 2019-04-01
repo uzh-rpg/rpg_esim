@@ -14,7 +14,7 @@ public:
 
   ~SyntheticOpticFlowPublisher();
 
-  virtual void imageCallback(const ImagePtrVector& images, Time t) override {
+  virtual void imageCallback(const ColorImagePtrVector& images, Time t) override {
     CHECK_EQ(images.size(), 1);
     if(sensor_size_.width == 0 || sensor_size_.height == 0)
     {
@@ -25,7 +25,7 @@ public:
   virtual void eventsCallback(const EventsVector& events) override;
   virtual void opticFlowCallback(const OpticFlowPtrVector& optic_flows, Time t)  override {}
 
-  virtual void imageCorruptedCallback(const ImagePtrVector& corrupted_images, Time t) override {}
+  virtual void imageCorruptedCallback(const ColorImagePtrVector& corrupted_images, Time t) override {}
   virtual void depthmapCallback(const DepthmapPtrVector& depthmaps, Time t) override {}
   virtual void poseCallback(const Transformation& T_W_B, const TransformationVector& T_W_Cs, Time t) override {}
   virtual void twistCallback(const AngularVelocityVector& ws, const LinearVelocityVector& vs, Time t) override {}

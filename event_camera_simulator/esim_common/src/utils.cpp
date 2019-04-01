@@ -111,6 +111,15 @@ FloatType maxMagnitudeOpticFlow(const OpticFlowPtr& flow)
   return std::sqrt(max_squared_magnitude);
 }
 
+FloatType maxPredictedAbsBrightnessChange(const ColorImagePtr& I, const OpticFlowPtr& flow)
+{
+  // Convert the color image into grayscale, and run the grayscale version
+  ImagePtr I_grayscale = std::make_shared<Image>();
+  cv::cvtColor(*I, *I_grayscale, cv::COLOR_RGB2GRAY);
+  return maxPredictedAbsBrightnessChange(I_grayscale, flow);
+}
+
+
 FloatType maxPredictedAbsBrightnessChange(const ImagePtr& I, const OpticFlowPtr& flow)
 {
   const size_t height = I->rows;
@@ -150,6 +159,11 @@ FloatType maxPredictedAbsBrightnessChange(const ImagePtr& I, const OpticFlowPtr&
   return static_cast<FloatType>(max_dLdt);
 }
 
+void gaussianBlur(ColorImagePtr& I, FloatType sigma)
+{
+  cv::GaussianBlur(*I, *I, cv::Size(15,15), sigma, sigma);
+}
+
 void gaussianBlur(ImagePtr& I, FloatType sigma)
 {
   cv::GaussianBlur(*I, *I, cv::Size(15,15), sigma, sigma);
@@ -185,6 +199,34 @@ PointCloud eventsToPointCloud(const Events& events, const Depthmap& depthmap, co
     pcl_camera.push_back(P_c_intensity);
   }
   return pcl_camera;
+}
+
+void colorImageToGrayscaleBayer(const ColorImage& img, Image* bayered_img)
+{
+  CHECK_NOTNULL(bayered_img);
+  *bayered_img = Image::zeros(img.rows, img.cols);
+
+  for(int y=0; y<img.rows; ++y)
+  {
+    for(int x=0; x<img.cols; ++x)
+    {
+      ImageFloatType color;
+      if(x % 2 == 0 && y % 2 == 0)
+      {
+        color = img(y, x)[2]; // red (BGR)
+      }
+      else if(x % 2 == 1 && y % 2 == 1)
+      {
+        color = img(y, x)[0]; // blue (BGR)
+      }
+      else
+      {
+        color = img(y, x)[1]; // green
+      }
+
+      (*bayered_img)(y, x) = color;
+    }
+  }
 }
 
 } // namespace event_camera_simulator

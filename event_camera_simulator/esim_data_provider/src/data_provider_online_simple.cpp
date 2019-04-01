@@ -28,7 +28,7 @@ DataProviderOnlineSimple::DataProviderOnlineSimple(ze::real_t simulation_minimum
     const cv::Size size = cv::Size(renderer_->getWidth(),
                                    renderer_->getHeight());
 
-    sim_data_.images.emplace_back(ImagePtr(new Image(size)));
+    sim_data_.images.emplace_back(ColorImagePtr(new ColorImage(size)));
     sim_data_.optic_flows.emplace_back(OpticFlowPtr(new OpticFlow(size)));
 
     sim_data_.images[i]->setTo(0);

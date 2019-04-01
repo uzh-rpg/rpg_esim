@@ -215,7 +215,7 @@ void OpenGLRenderer::setCamera(const ze::Camera::Ptr& camera)
 
 void OpenGLRenderer::render(const Transformation& T_W_C,
                             const std::vector<Transformation>& T_W_OBJ,
-                            const ImagePtr& out_image,
+                            const ColorImagePtr& out_image,
                             const DepthmapPtr& out_depthmap) const
 {
   CHECK(is_initialized_) << "Called render() but the renderer was not initialized yet. Have you first called setCamera()?";
@@ -225,7 +225,7 @@ void OpenGLRenderer::render(const Transformation& T_W_C,
   CHECK_EQ(out_image->rows, height_);
   CHECK_EQ(out_depthmap->cols, width_);
   CHECK_EQ(out_depthmap->rows, height_);
-  CHECK_EQ(out_image->type(), CV_32F);
+  CHECK_EQ(out_image->type(), CV_32FC3);
   CHECK_EQ(out_depthmap->type(), CV_32F);
 
   // draw to our framebuffer instead of screen
@@ -316,9 +316,8 @@ void OpenGLRenderer::render(const Transformation& T_W_C,
   // see the "Learn OpenGL book, page 177
   cv::Mat linear_depth = (2.0 * zmin * zmax) / (zmax + zmin - (2 * img_depth - 1.f) * (zmax - zmin));
 
-  cv::Mat img_grayscale;
-  cv::cvtColor(img_color, img_grayscale, cv::COLOR_BGR2GRAY);
-  img_grayscale.convertTo(*out_image, CV_32F, 1.f/255.f);
+  cv::cvtColor(img_color, img_color, cv::COLOR_RGB2BGR);
+  img_color.convertTo(*out_image, CV_32FC3, 1.f/255.f);
 
   linear_depth.copyTo(*out_depthmap);
 }
@@ -330,7 +329,7 @@ void OpenGLRenderer::renderWithFlow(const Transformation& T_W_C,
                                     const std::vector<Transformation>& T_W_OBJ,
                                     const std::vector<LinearVelocity>& linear_velocity_obj,
                                     const std::vector<AngularVelocity>& angular_velocity_obj,
-                                    const ImagePtr& out_image,
+                                    const ColorImagePtr& out_image,
                                     const DepthmapPtr& out_depthmap,
                                     const OpticFlowPtr& optic_flow_map) const
 {

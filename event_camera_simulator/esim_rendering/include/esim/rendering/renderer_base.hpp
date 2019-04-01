@@ -17,7 +17,7 @@ public:
   //! Render an image at a given pose.
   virtual void render(const Transformation& T_W_C,
                       const std::vector<Transformation>& T_W_OBJ,
-                      const ImagePtr& out_image,
+                      const ColorImagePtr& out_image,
                       const DepthmapPtr& out_depthmap) const = 0;
 
 
@@ -32,7 +32,7 @@ public:
                       const std::vector<Transformation>& T_W_OBJ,
                       const std::vector<LinearVelocity>& linear_velocity_obj,
                       const std::vector<AngularVelocity>& angular_velocity_obj,
-                      const ImagePtr& out_image,
+                      const ColorImagePtr& out_image,
                       const DepthmapPtr& out_depthmap,
                       const OpticFlowPtr& optic_flow_map) const {}
 

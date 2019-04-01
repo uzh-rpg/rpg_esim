@@ -105,7 +105,7 @@ private:
 
 void getIntensityAndAlpha(const cv::Mat& image,
                           int x, int y,
-                          ImageFloatType* intensity,
+                          cv::Vec<ImageFloatType, 3>* intensity,
                           ImageFloatType* alpha);
 
 inline ImageFloatType bgrToGrayscale(uchar b,

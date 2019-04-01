@@ -18,7 +18,7 @@ DataProviderFromFolder::DataProviderFromFolder(const std::string& path_to_data_f
   CHECK_EQ(camera_rig_->size(), 1u) << "Only one camera in the rig is supported at the moment";
 
   // Allocate memory for image data
-  sim_data_.images.emplace_back(ImagePtr(new Image(
+  sim_data_.images.emplace_back(ColorImagePtr(new ColorImage(
                                            cv::Size(camera_rig_->at(0).width(),
                                                     camera_rig_->at(0).height()))));
 

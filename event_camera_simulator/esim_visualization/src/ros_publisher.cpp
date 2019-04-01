@@ -140,7 +140,7 @@ void RosPublisher::pointcloudCallback(const PointCloudVector& pointclouds, Time 
   last_published_pointcloud_time_ = t;
 }
 
-void RosPublisher::imageCallback(const ImagePtrVector& images, Time t)
+void RosPublisher::imageCallback(const ColorImagePtrVector& images, Time t)
 {
   CHECK_EQ(image_pub_.size(), num_cameras_);
 
@@ -172,7 +172,7 @@ void RosPublisher::imageCallback(const ImagePtrVector& images, Time t)
   last_published_image_time_ = t;
 }
 
-void RosPublisher::imageCorruptedCallback(const ImagePtrVector& corrupted_images, Time t)
+void RosPublisher::imageCorruptedCallback(const ColorImagePtrVector& corrupted_images, Time t)
 {
   CHECK_EQ(image_corrupted_pub_.size(), num_cameras_);
 

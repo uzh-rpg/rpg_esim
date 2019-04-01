@@ -46,7 +46,7 @@ void UnrealCvRenderer::setCamera(const ze::Camera::Ptr& camera)
 }
 
 
-void UnrealCvRenderer::render(const Transformation& T_W_C, const ImagePtr& out_image, const DepthmapPtr& out_depthmap) const
+void UnrealCvRenderer::render(const Transformation& T_W_C, const ColorImagePtr& out_image, const DepthmapPtr& out_depthmap) const
 {
   CHECK_EQ(out_image->rows, camera_->height());
   CHECK_EQ(out_image->cols, camera_->width());
@@ -118,21 +118,18 @@ void UnrealCvRenderer::render(const Transformation& T_W_C, const ImagePtr& out_i
     cv::imwrite(path_frame, img, {CV_IMWRITE_PNG_COMPRESSION, 9});
   }
 
-  cv::Mat img_gray;
-  cv::cvtColor(img, img_gray, cv::COLOR_BGR2GRAY);
-
   if(FLAGS_unrealcv_post_median_blur > 0)
   {
-    cv::medianBlur(img_gray, img_gray, FLAGS_unrealcv_post_median_blur);
+    cv::medianBlur(img, img, FLAGS_unrealcv_post_median_blur);
   }
 
   if(FLAGS_unrealcv_post_gaussian_blur_sigma > 0)
   {
-    cv::GaussianBlur(img_gray, img_gray, cv::Size(-1,-1), FLAGS_unrealcv_post_gaussian_blur_sigma);
+    cv::GaussianBlur(img, img, cv::Size(-1,-1), FLAGS_unrealcv_post_gaussian_blur_sigma);
   }
 
-  cv::resize(img_gray, img_gray, cv::Size(camera_->width(), camera_->height()));
-  img_gray.convertTo(*out_image, cv::DataType<ImageFloatType>::type, 1./255.);
+  cv::resize(img, img, cv::Size(camera_->width(), camera_->height()));
+  img.convertTo(*out_image, cv::DataType<ImageFloatType>::type, 1./255.);
 
   cv::Mat depth = client_->getDepth(0);
   VLOG(5) << "Got depth map from the UnrealCV client";

@@ -13,8 +13,8 @@ public:
                size_t num_cameras);
   ~RosbagWriter();
 
-  virtual void imageCallback(const ImagePtrVector& images, Time t) override;
-  virtual void imageCorruptedCallback(const ImagePtrVector& corrupted_images, Time t) override;
+  virtual void imageCallback(const ColorImagePtrVector& images, Time t) override;
+  virtual void imageCorruptedCallback(const ColorImagePtrVector& corrupted_images, Time t) override;
   virtual void depthmapCallback(const DepthmapPtrVector& depthmaps, Time t) override;
   virtual void opticFlowCallback(const OpticFlowPtrVector& optic_flows, Time t) override;
   virtual void eventsCallback(const EventsVector& events) override;

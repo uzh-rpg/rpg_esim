@@ -34,7 +34,7 @@ void Simulator::dataProviderCallback(const SimulatorData &sim_data)
         if(corrupted_camera_images_.size() < num_cameras_)
         {
           // allocate memory for the corrupted camera images and set them to 0
-          corrupted_camera_images_.emplace_back(std::make_shared<Image>(sim_data.images[i]->size()));
+          corrupted_camera_images_.emplace_back(std::make_shared<ColorImage>(sim_data.images[i]->size()));
           corrupted_camera_images_[i]->setTo(0.);
         }
 
@@ -61,7 +61,7 @@ void Simulator::dataProviderCallback(const SimulatorData &sim_data)
 void Simulator::publishData(const SimulatorData& sim_data,
                             const EventsVector& events,
                             bool camera_simulator_success,
-                            const ImagePtrVector& camera_images)
+                            const ColorImagePtrVector& camera_images)
 {
   if(publishers_.empty())
   {

@@ -16,7 +16,7 @@ DECLARE_TIMER(TimerPlanarRenderer, timers_planar_renderer,
 
 namespace event_camera_simulator {
 
-PlanarRenderer::PlanarRenderer(const Image& texture,
+PlanarRenderer::PlanarRenderer(const ColorImage& texture,
                                const Camera::Ptr &cam_src,
                                const Transformation& T_W_P,
                                FloatType z_min,
@@ -70,7 +70,7 @@ void PlanarRenderer::precomputePixelToBearingLookupTable()
   bearings_C_.array().rowwise() /= bearings_C_.row(2).array();
 }
 
-void PlanarRenderer::render(const Transformation& T_W_C, const ImagePtr& out_image, const DepthmapPtr& out_depthmap) const
+void PlanarRenderer::render(const Transformation& T_W_C, const ColorImagePtr& out_image, const DepthmapPtr& out_depthmap) const
 {
   CHECK_EQ(out_image->rows, camera_->height());
   CHECK_EQ(out_image->cols, camera_->width());

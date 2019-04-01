@@ -2,7 +2,7 @@
 
 namespace event_camera_simulator {
 
-void ImageBuffer::addImage(Time t, const Image& img)
+void ImageBuffer::addImage(Time t, const ColorImage& img)
 {
   if(!data_.empty())
   {
@@ -29,8 +29,8 @@ void ImageBuffer::addImage(Time t, const Image& img)
 }
 
 
-bool CameraSimulator::imageCallback(const Image &img, Time time,
-                                    const ImagePtr& camera_image)
+bool CameraSimulator::imageCallback(const ColorImage &img, Time time,
+                                    const ColorImagePtr& camera_image)
 {
   CHECK(camera_image);
   CHECK_EQ(camera_image->size(), img.size());

@@ -27,6 +27,7 @@ public:
     Duration refractory_period_ns;
     bool use_log_image;
     double log_eps;
+    bool simulate_color_events;
   };
 
   using TimestampImage = cv::Mat_<ze::real_t>;
@@ -38,9 +39,10 @@ public:
   {}
 
   void init(const Image& img, Time time);
-  Events imageCallback(const Image& img, Time time);
+  Events imageCallback(const ColorImage& img, Time time);
 
 private:
+
   bool is_initialized_;
   Time current_time_;
   Image ref_values_;

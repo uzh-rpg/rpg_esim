@@ -1,4 +1,5 @@
 #include <esim/esim/event_simulator.hpp>
+#include <esim/common/utils.hpp>
 #include <ze/common/random.hpp>
 #include <glog/logging.h>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -18,14 +19,26 @@ void EventSimulator::init(const Image &img, Time time)
   size_ = img.size();
 }
 
-Events EventSimulator::imageCallback(const Image& img, Time time)
+Events EventSimulator::imageCallback(const ColorImage& img, Time time)
 {
   CHECK_GE(time, 0);
-  Image preprocessed_img = img.clone();
+
+  Image preprocessed_img;
+
+  if(config_.simulate_color_events)
+  {
+    // Convert BGR image to bayered image (for color event simulation)
+    colorImageToGrayscaleBayer(img, &preprocessed_img);
+  }
+  else
+  {
+    cv::cvtColor(img, preprocessed_img, cv::COLOR_RGB2GRAY);
+  }
+
   if(config_.use_log_image)
   {
     LOG_FIRST_N(INFO, 1) << "Converting the image to log image with eps = " << config_.log_eps << ".";
-    cv::log(config_.log_eps + img, preprocessed_img);
+    cv::log(config_.log_eps + preprocessed_img, preprocessed_img);
   }
 
   if(!is_initialized_)

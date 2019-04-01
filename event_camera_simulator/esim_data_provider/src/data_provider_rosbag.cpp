@@ -31,7 +31,7 @@ DataProviderRosbag::DataProviderRosbag(
   {
     VLOG(1) << "Subscribing to: " << it.first;
     topics.push_back(it.first);
-    sim_data_.images.emplace_back(ImagePtr(new Image()));
+    sim_data_.images.emplace_back(ColorImagePtr(new ColorImage()));
   }
 
   initBagView(topics);

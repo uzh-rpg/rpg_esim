@@ -21,7 +21,7 @@ public:
   //! Render an image at a given pose.
   virtual void render(const Transformation& T_W_C,
                       const std::vector<Transformation>& T_W_OBJ,
-                      const ImagePtr& out_image,
+                      const ColorImagePtr& out_image,
                       const DepthmapPtr& out_depthmap) const;
 
   //! Returns true if the rendering engine can compute optic flow, false otherwise
@@ -35,7 +35,7 @@ public:
                             const std::vector<Transformation>& T_W_OBJ,
                             const std::vector<LinearVelocity>& linear_velocity_obj,
                             const std::vector<AngularVelocity>& angular_velocity_obj,
-                            const ImagePtr& out_image,
+                            const ColorImagePtr& out_image,
                             const DepthmapPtr& out_depthmap,
                             const OpticFlowPtr& optic_flow_map) const override;
 

@@ -13,8 +13,8 @@ public:
   Publisher() = default;
   virtual ~Publisher() = default;
 
-  virtual void imageCallback(const ImagePtrVector& images, Time t) = 0;
-  virtual void imageCorruptedCallback(const ImagePtrVector& corrupted_images, Time t) = 0;
+  virtual void imageCallback(const ColorImagePtrVector& images, Time t) = 0;
+  virtual void imageCorruptedCallback(const ColorImagePtrVector& corrupted_images, Time t) = 0;
   virtual void depthmapCallback(const DepthmapPtrVector& depthmaps, Time t) = 0;
   virtual void opticFlowCallback(const OpticFlowPtrVector& optic_flows, Time t) = 0;
   virtual void eventsCallback(const EventsVector& events) = 0;

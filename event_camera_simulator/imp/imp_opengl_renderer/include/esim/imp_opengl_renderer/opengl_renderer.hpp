@@ -12,6 +12,8 @@ namespace event_camera_simulator {
 class OpenGLRenderer : public Renderer
 {
 public:
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
   ZE_POINTER_TYPEDEFS(Renderer);
 
   OpenGLRenderer();

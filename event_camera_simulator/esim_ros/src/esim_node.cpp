@@ -20,7 +20,7 @@ DEFINE_double(contrast_threshold_sigma_pos, 0.021,
 DEFINE_double(contrast_threshold_sigma_neg, 0.021,
               "Standard deviation of contrast threshold  (negative))");
 
-DEFINE_int64(refractory_period_ns, 100000,
+DEFINE_int64(refractory_period_ns, 0,
              "Refractory period (time during which a pixel cannot fire events just after it fired one), in nanoseconds");
 
 DEFINE_double(exposure_time_ms, 10.0,

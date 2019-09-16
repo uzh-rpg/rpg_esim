@@ -8,19 +8,19 @@
 #include <gflags/gflags.h>
 #include <glog/logging.h>
 
-DEFINE_double(ros_publisher_camera_info_rate, 10,
+DEFINE_double(ros_publisher_camera_info_rate, 0,
 "Camera info (maximum) publish rate, in Hz");
 
-DEFINE_double(ros_publisher_frame_rate, 25,
+DEFINE_double(ros_publisher_frame_rate, 30,
 "(Maximum) frame rate, in Hz");
 
-DEFINE_double(ros_publisher_depth_rate, 25,
+DEFINE_double(ros_publisher_depth_rate, 0,
 "(Maximum) depthmap publish rate, in Hz");
 
-DEFINE_double(ros_publisher_pointcloud_rate, 25,
+DEFINE_double(ros_publisher_pointcloud_rate, 0,
 "(Maximum) point cloud publish rate, in Hz");
 
-DEFINE_double(ros_publisher_optic_flow_rate, 25,
+DEFINE_double(ros_publisher_optic_flow_rate, 0,
 "(Maximum) optic flow map publish rate, in Hz");
 
 namespace event_camera_simulator {
@@ -246,8 +246,8 @@ void RosPublisher::opticFlowCallback(const OpticFlowPtrVector& optic_flows, Time
     }
 
     static const Duration min_time_interval_between_published_optic_flows_
-        = ze::secToNanosec(1.0 / FLAGS_ros_publisher_optic_flow_rate);
-    if(last_published_optic_flow_time_ > 0 && t - last_published_optic_flow_time_ < min_time_interval_between_published_optic_flows_)
+        = (min_time_interval_between_published_optic_flows_ > 0) ? ze::secToNanosec(1.0 / FLAGS_ros_publisher_optic_flow_rate) : 0;
+    if(min_time_interval_between_published_optic_flows_ > 0 && last_published_optic_flow_time_ > 0 && t - last_published_optic_flow_time_ < min_time_interval_between_published_optic_flows_)
     {
       return;
     }

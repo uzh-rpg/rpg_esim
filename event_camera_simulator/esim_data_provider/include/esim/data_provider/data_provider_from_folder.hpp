@@ -35,7 +35,8 @@ private:
   std::string path_to_data_folder_;
   std::ifstream images_in_str_;
   const char delimiter_{','};
-  const size_t num_tokens_in_line_ = 3; // stamp, image, depth
+  const size_t num_tokens_in_line_ = 2; // stamp, image
+  bool finished_parsing_;
 
   SimulatorData sim_data_;
 };

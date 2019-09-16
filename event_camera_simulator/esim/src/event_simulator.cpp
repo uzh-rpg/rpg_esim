@@ -58,6 +58,8 @@ Events EventSimulator::imageCallback(const Image& img, Time time)
         if(sigma_C > 0)
         {
           C += ze::sampleNormalDistribution<ImageFloatType>(false, 0, sigma_C);
+          constexpr ImageFloatType minimum_contrast_threshold = 0.01;
+          C = std::max(minimum_contrast_threshold, C);
         }
         ImageFloatType curr_cross = prev_cross;
         bool all_crossings = false;

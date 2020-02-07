@@ -268,7 +268,7 @@ void OpenGLRenderer::render(const Transformation& T_W_C,
   unsigned int projectionLoc = glGetUniformLocation(shader->ID, "projection");
   glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection)); // TODO outside of main loop
 
-  optic_flow_shader->setFloat("alpha_ambient", (float) FLAGS_renderer_alpha_ambient);
+  shader->setFloat("alpha_ambient", (float) FLAGS_renderer_alpha_ambient);
 
   our_model->Draw(*shader);
 

@@ -10,6 +10,8 @@ catkin_python_setup()
 
 find_package(PCL REQUIRED)
 
+find_package(dvs_msgs REQUIRED)
+
 set(HEADERS
     include/esim/visualization/publisher_interface.hpp
     include/esim/visualization/ros_utils.hpp

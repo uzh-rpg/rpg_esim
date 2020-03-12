@@ -8,6 +8,8 @@ catkin_simple()
 # See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
 catkin_python_setup()
 
+find_package(PCL REQUIRED)
+
 set(HEADERS
     include/esim/visualization/publisher_interface.hpp
     include/esim/visualization/ros_utils.hpp

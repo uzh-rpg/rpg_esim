@@ -11,6 +11,7 @@ catkin_python_setup()
 find_package(PCL REQUIRED)
 
 find_package(dvs_msgs REQUIRED)
+find_package(minkindr_conversions REQUIRED)
 
 set(HEADERS
     include/esim/visualization/publisher_interface.hpp

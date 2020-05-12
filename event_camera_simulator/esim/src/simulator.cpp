@@ -2,6 +2,7 @@
 #include <ze/common/timer_collection.hpp>
 #include <esim/common/utils.hpp>
 
+
 namespace event_camera_simulator {
 
 DECLARE_TIMER(TimerEventSimulator, timers_event_simulator_,
@@ -10,8 +11,8 @@ DECLARE_TIMER(TimerEventSimulator, timers_event_simulator_,
               );
 
 Simulator::~Simulator()
-{
-  timers_event_simulator_.saveToFile("/tmp", "event_simulator.csv");
+{ 
+  timers_event_simulator_.saveToFileIfWritable("/tmp", "event_simulator.csv");
 }
 
 void Simulator::dataProviderCallback(const SimulatorData &sim_data)

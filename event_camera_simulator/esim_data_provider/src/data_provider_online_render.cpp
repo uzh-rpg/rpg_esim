@@ -113,7 +113,7 @@ DataProviderOnlineMoving3DCameraRig::DataProviderOnlineMoving3DCameraRig(ze::rea
 
 DataProviderOnlineMoving3DCameraRig::~DataProviderOnlineMoving3DCameraRig()
 {
-  timers_data_provider_.saveToFile("/tmp", "data_provider_online_render.csv");
+  timers_data_provider_.saveToFileIfWritable("/tmp", "data_provider_online_render.csv");
 }
 
 size_t DataProviderOnlineMoving3DCameraRig::numCameras() const

@@ -37,8 +37,8 @@ PlanarRenderer::PlanarRenderer(const Image& texture,
 }
 
 PlanarRenderer::~PlanarRenderer()
-{
-  timers_planar_renderer.saveToFile("/tmp", "planar_renderer.csv");
+{  
+  timers_planar_renderer.saveToFileIfWritable("/tmp", "planar_renderer.csv");
 }
 
 void PlanarRenderer::setCamera(const ze::Camera::Ptr& camera)

@@ -115,7 +115,7 @@ void UnrealCvRenderer::render(const Transformation& T_W_C, const ImagePtr& out_i
     ss_nr << std::setw(10) << std::setfill('0') << frame_idx_;
     std::string path_frame = ze::joinPath(FLAGS_unrealcv_output_directory, "frame_" + ss_nr.str() +  ".png");
     VLOG(1) << "Saving raw RGB image to: " << path_frame;
-    cv::imwrite(path_frame, img, {CV_IMWRITE_PNG_COMPRESSION, 9});
+    cv::imwrite(path_frame, img, {cv::IMWRITE_PNG_COMPRESSION, 9});
   }
 
   cv::Mat img_gray;

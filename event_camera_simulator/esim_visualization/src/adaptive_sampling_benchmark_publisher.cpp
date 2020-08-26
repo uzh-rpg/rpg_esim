@@ -82,7 +82,7 @@ void AdaptiveSamplingBenchmarkPublisher::imageCallback(const ImagePtrVector& ima
 
   if(image_index_ == 0)
   {
-    static const std::vector<int> compression_params = {CV_IMWRITE_PNG_COMPRESSION, 0};
+    static const std::vector<int> compression_params = {cv::IMWRITE_PNG_COMPRESSION, 0};
 
     std::stringstream ss;
     ss << ze::joinPath(FLAGS_adaptive_sampling_benchmark_folder, "image_");

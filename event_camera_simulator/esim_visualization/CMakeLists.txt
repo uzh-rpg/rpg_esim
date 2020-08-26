@@ -3,6 +3,8 @@ project(esim_visualization)
 
 find_package(catkin_simple REQUIRED)
 catkin_simple()
+set(CMAKE_CXX_STANDARD 14)
+
 
 # This macro ensures modules and global scripts declared therein get installed
 # See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html

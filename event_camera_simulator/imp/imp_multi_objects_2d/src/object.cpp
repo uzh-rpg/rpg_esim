@@ -90,7 +90,7 @@ void Object::draw(Time t, bool is_first_layer)
                       canvas_,
                       M_10,
                       canvas_.size(),
-                      CV_INTER_LINEAR,
+                      cv::INTER_LINEAR,
                       border_mode);
 
   cv::Matx<FloatType, 3, 3> SS = dM10_dt * M_10.inv();

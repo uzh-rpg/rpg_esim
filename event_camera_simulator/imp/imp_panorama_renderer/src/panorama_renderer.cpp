@@ -101,7 +101,7 @@ void PanoramaRenderer::render(const Transformation& T_W_C, const ImagePtr& out_i
     }
   }
 
-  cv::remap(texture_, *out_image, map_x_, map_y_, CV_INTER_LINEAR, cv::BORDER_REFLECT_101);
+  cv::remap(texture_, *out_image, map_x_, map_y_, cv::INTER_LINEAR, cv::BORDER_REFLECT_101);
 
   if(out_depthmap)
   {

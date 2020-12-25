@@ -111,7 +111,7 @@ void PlanarRenderer::render(const Transformation& T_W_C, const ImagePtr& out_ima
   int border = (extend_border_) ? cv::BORDER_REFLECT : cv::BORDER_CONSTANT;
   {
     auto t = timers_planar_renderer[TimerPlanarRenderer::remap].timeScope();
-    cv::remap(texture_, *out_image, map_x_, map_y_, CV_INTER_LINEAR, border, 0.8);
+    cv::remap(texture_, *out_image, map_x_, map_y_, cv::INTER_LINEAR, border, 0.8);
   }
 
   // Compute depth map in dst

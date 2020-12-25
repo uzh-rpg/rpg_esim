@@ -80,7 +80,7 @@ SyntheticOpticFlowPublisher::~SyntheticOpticFlowPublisher()
   std::string path_timestamps_neg = ze::joinPath(output_folder_, "event_time_stamps_neg.png");
 
   std::vector<int> compression_params;
-  compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
+  compression_params.push_back(cv::IMWRITE_PNG_COMPRESSION);
   compression_params.push_back(0);
 
   cv::imwrite(path_event_count_image, event_count_image, compression_params);

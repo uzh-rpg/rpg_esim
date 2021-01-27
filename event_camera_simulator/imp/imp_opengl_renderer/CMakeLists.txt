@@ -4,6 +4,7 @@ project(imp_opengl_renderer)
 find_package(catkin_simple REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(glfw3 REQUIRED)
+find_package(assimp REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 catkin_simple()
 
@@ -39,7 +40,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIR})
 target_include_directories(${PROJECT_NAME} PRIVATE ${GLAD_DIR}/include)
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
 
-target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${CMAKE_DL_LIBS} glfw glad)
+target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${CMAKE_DL_LIBS} glfw glad assimp)
 
 cs_install()
 cs_export()

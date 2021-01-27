@@ -10,6 +10,11 @@ set(CMAKE_CXX_STANDARD 14)
 # See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
 catkin_python_setup()
 
+find_package(PCL REQUIRED)
+
+find_package(dvs_msgs REQUIRED)
+find_package(minkindr_conversions REQUIRED)
+
 set(HEADERS
     include/esim/visualization/publisher_interface.hpp
     include/esim/visualization/ros_utils.hpp

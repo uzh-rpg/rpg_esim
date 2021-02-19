@@ -14,6 +14,11 @@ This is the code for the 2018 CoRL paper **ESIM: an Open Event Camera Simulator*
 ```
 You can find a pdf of the paper [here](http://rpg.ifi.uzh.ch/docs/CORL18_Rebecq.pdf). If you use any of this code, please cite this publication.
 
+## Python Bindings
+Python bindings for the event camera simulator can be found [here](https://github.com/uzh-rpg/rpg_vid2e). 
+We now also support GPU support for fully parallel event generation!
+
+
 ## Features
 
 - Accurate event simulation, guaranteed by the tight integration between the rendering engine and the event simulator

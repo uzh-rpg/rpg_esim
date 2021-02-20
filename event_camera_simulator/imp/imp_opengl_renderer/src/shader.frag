@@ -6,6 +6,8 @@ in vec3 Normal;
 
 uniform sampler2D texture_diffuse1;
 
+uniform float alpha_ambient;
+
 void main()
 {
     // global light (sun)
@@ -22,8 +24,7 @@ void main()
           clamp(diffuse_frac, 0, 1) // front
         + clamp(diffuse_frac * 0.3, -1, 0); // back
 
-
     FragColor =
-          MaterialColor * 0.3 // ambient
-        + MaterialColor * 0.7 * diffuse;
+          MaterialColor * alpha_ambient // ambient
+        + MaterialColor * (1-alpha_ambient) * diffuse;
 }

@@ -81,7 +81,7 @@ void RosbagWriter::pointcloudCallback(const PointCloudVector& pointclouds, Time 
     std::stringstream ss; ss << "cam" << i;
     pointCloudToMsg(pointclouds[i], ss.str(), t, msg);
     bag_.write(getTopicName(topic_name_prefix_, i, "pointcloud"),
-               toRosTime(t), msg);
+               toRosTime(t), *msg);
   }
   last_published_pointcloud_time_ = t;
 }

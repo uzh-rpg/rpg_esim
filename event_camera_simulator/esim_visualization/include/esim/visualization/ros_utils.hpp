@@ -2,7 +2,7 @@
 
 #include <esim/common/types.hpp>
 #include <pcl_ros/point_cloud.h>
-#include <pcl/point_types.h>
+#include <pcl/type_traits.h>
 #include <sensor_msgs/Image.h>
 #include <dvs_msgs/EventArray.h>
 #include <geometry_msgs/PoseStamped.h>

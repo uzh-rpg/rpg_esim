@@ -134,7 +134,7 @@ void RosPublisher::pointcloudCallback(const PointCloudVector& pointclouds, Time 
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr msg (new pcl::PointCloud<pcl::PointXYZRGB>);
     std::stringstream ss; ss << "cam" << i;
     pointCloudToMsg(pointclouds[i], ss.str(), t, msg);
-    pointcloud_pub_[i]->publish(msg);
+    pointcloud_pub_[i]->publish(*msg);
   }
 
   last_published_pointcloud_time_ = t;

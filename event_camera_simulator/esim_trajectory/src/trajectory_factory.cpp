@@ -205,6 +205,34 @@ std::tuple<ze::TrajectorySimulator::Ptr, std::vector<ze::TrajectorySimulator::Pt
             LOG(INFO) << "Done!";
             break;
         }
+        case 2: // Sinusoidal spline
+        {
+            std::shared_ptr<ze::BSplinePoseMinimalRotationVector> pbs =
+                std::make_shared<ze::BSplinePoseMinimalRotationVector>(FLAGS_trajectory_spline_order);
+            ze::MatrixX poses;
+            ze::VectorX times = ze::VectorX::LinSpaced(FLAGS_trajectory_sampling_frequency_hz * FLAGS_trajectory_length_s,
+                                                    0,
+                                                    FLAGS_trajectory_length_s);
+            poses.resize(6, times.size());
+            for (int i = 0; i < 6; i++){
+              poses.row(i) = (M_PI*times).array().sin();
+            }
+            poses.row(0) *= FLAGS_trajectory_multiplier_x;
+            poses.row(1) *= FLAGS_trajectory_multiplier_y;
+            poses.row(2) *= FLAGS_trajectory_multiplier_z;
+            poses.row(3) *= FLAGS_trajectory_multiplier_wx;
+            poses.row(4) *= FLAGS_trajectory_multiplier_wy;
+            poses.row(5) *= FLAGS_trajectory_multiplier_wz;
+            poses.row(0).array() += FLAGS_trajectory_offset_x;
+            poses.row(1).array() += FLAGS_trajectory_offset_y;
+            poses.row(2).array() += FLAGS_trajectory_offset_z;
+            poses.row(3).array() += FLAGS_trajectory_offset_wx;
+            poses.row(4).array() += FLAGS_trajectory_offset_wy;
+            poses.row(5).array() += FLAGS_trajectory_offset_wz;
+            pbs->initPoseSpline3(times, poses, FLAGS_trajectory_num_spline_segments, FLAGS_trajectory_lambda);
+            trajectory.reset(new ze::SplineTrajectorySimulator(pbs));
+            break;
+        }
         default:
         {
             LOG(FATAL) << "Trajectory type is not known.";

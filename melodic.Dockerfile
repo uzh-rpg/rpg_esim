@@ -24,8 +24,8 @@ RUN apt-get install -y \
       ros-melodic-tf \
       ros-melodic-pcl-ros \
       libglfw3-dev \
-      libassimp-dev
-      #ros-melodic-assimp-devel
+      libassimp-dev \
+      ros-melodic-rviz
 
 RUN apt-get clean autoclean &&\
     rm -rf /var/lib/apt/lists/*

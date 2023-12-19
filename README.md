@@ -1,3 +1,7 @@
+# Foreward
+
+The work herein is primarily that of Rebecq et al as retained from the original README below. This fork simple impelements a dockerized version such that ESIM can be used on newer platforms. Links below are retained back to the original repository as there are no plans to update those sections at this time. 
+
 # ESIM: an Open Event Camera Simulator
 
 [![ESIM: an Open Event Camera Simulator](http://rpg.ifi.uzh.ch/esim/img/youtube_preview.png)](https://youtu.be/ytKOIX_2clo)

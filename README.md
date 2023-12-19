@@ -23,7 +23,9 @@ Then, simply run the container, source the setup file, and launch the renderer. 
 
 ```bash
 # On the host
-podman run --rm -ti esim:melodic
+# Running as root via rootless podman mitigates security risks that come with root access to xhost.
+# Use with caution if you are not running rootless podman!
+podman run --rm -ti -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v /etc/localtime:/etc/localtime:ro esim
 ```
 
 ```bash
@@ -44,7 +46,7 @@ roslaunch esim_ros esim.launch config:=cfg/opengl.conf
 ```
 
 ## TODO
-- [ ] Add a graphical run script for visualization compatibility as discussed in numerous forum posts like [this one](https://unix.stackexchange.com/questions/330366/how-can-i-run-a-graphical-application-in-a-container-under-wayland)
+- [x] Add a graphical run script for visualization compatibility as discussed in numerous forum posts like [this one](https://unix.stackexchange.com/questions/330366/how-can-i-run-a-graphical-application-in-a-container-under-wayland)
 
 ## Acknowledgements
 

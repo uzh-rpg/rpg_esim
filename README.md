@@ -42,3 +42,9 @@ Specific instructions to run the simulator depending on the chosen rendering eng
 ## Acknowledgements
 
 We thank Raffael Theiler and Dario Brescianini for their contributions to ESIM.
+This research was supported by by Swiss National Center of Competence Research Robotics (NCCR), Qualcomm (through the Qualcomm Innovation Fellowship Award 2018), the SNSF-ERC Starting Grant and DARPA FLA.
+
+A significant part of ESIM uses components (spline trajectories, inertial measurement unit simulation, various utility functions) from the [ze_oss](https://github.com/zurich-eye/ze_oss) project.
+ESIM depends on [UnrealCV](https://github.com/unrealcv/unrealcv) for the photorealistic rendering engine.
+We also reused some [code samples](https://github.com/JoeyDeVries/LearnOpenGL.git) from the excellent [Lean OpenGL](https://learnopengl.com/) tutorial in our OpenGL rendering engine.
+Finally, ESIM depends on the [Open Asset Import Library (assimp)](https://github.com/assimp/assimp) to load 3D models and Blender scenes within the OpenGL rendering engine.

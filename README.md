@@ -1,53 +1,44 @@
-# Foreward
+# ESIM: an Open Event Camera Simulator
 
-The work herein is primarily that of Rebecq et al, in the Acknowlegements section below. This fork simply impelements a dockerized version such that ESIM can be used on platforms without ROS Melodic. 
+[![ESIM: an Open Event Camera Simulator](http://rpg.ifi.uzh.ch/esim/img/youtube_preview.png)](https://youtu.be/ytKOIX_2clo)
 
-## Suggested Installation
-
-After cloning this repository, simply build the dockerfile as follows.
-
-```bash
-# where $(pwd) is /the/path/to/rpg_esim
-podman build -t esim:melodic -f melodic.Dockerfile
+This is the code for the 2018 CoRL paper **ESIM: an Open Event Camera Simulator** by [Henri Rebecq](http://henri.rebecq.fr), [Daniel Gehrig](https://danielgehrig18.github.io/) and [Davide Scaramuzza](http://rpg.ifi.uzh.ch/people_scaramuzza.html):
+```bibtex
+@Article{Rebecq18corl,
+  author        = {Henri Rebecq and Daniel Gehrig and Davide Scaramuzza},
+  title         = {{ESIM}: an Open Event Camera Simulator},
+  journal       = {Conf. on Robotics Learning (CoRL)},
+  year          = 2018,
+  month         = oct
+}
 ```
+You can find a pdf of the paper [here](http://rpg.ifi.uzh.ch/docs/CORL18_Rebecq.pdf). If you use any of this code, please cite this publication.
 
-Alternatively, build with docker (untested)
+## Python Bindings
+Python bindings for the event camera simulator can be found [here](https://github.com/uzh-rpg/rpg_vid2e). 
+We now also support GPU support for fully parallel event generation!
 
-```bash
-podman build -t esim:melodic -f melodic.Dockerfile
-```
+
+## Features
+
+- Accurate event simulation, guaranteed by the tight integration between the rendering engine and the event simulator
+- Inertial Measurement Unit (IMU) simulation
+- Support for multi-camera systems
+- Ground truth camera poses, IMU biases, angular/linear velocities, depth maps, and optic flow maps
+- Support for camera distortion (only planar and panoramic renderers)
+- Different C+/C- contrast thresholds
+- Basic noise simulation for event cameras (based on additive Gaussian noise on the contrast threshold)
+- Motion blur simulation
+- Publish to ROS and/or save data to rosbag
+
+## Install
+
+Installation instructions can be found in [our wiki](https://github.com/uzh-rpg/rpg_esim/wiki/Installation).
 
 ## Run
 
-Then, simply run the container, source the setup file, and launch the renderer. Please refer to specific instructions to run a given simulator in [the original rpg_esim wiki](https://github.com/uzh-rpg/rpg_esim/wiki).
-
-```bash
-# On the host
-# Running as root via rootless podman mitigates security risks that come with root access to xhost.
-# Use with caution if you are not running rootless podman!
-podman run --rm -ti -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v /etc/localtime:/etc/localtime:ro esim
-```
-
-```bash
-# In the container
-. /home/user/sim_ws/devel/setup.bash
-roscd esim_ros
-# Based on the suggested test renderer
-roslaunch esim_ros esim.launch config:=cfg/example.conf
-```
-
-An alternative, 3D, rendering option is below.
-
-### OpenGL Renderer
-
-```bash
-roscd esim_ros
-roslaunch esim_ros esim.launch config:=cfg/opengl.conf
-```
-
-## TODO
-- [x] Add a graphical run script for visualization compatibility as discussed in numerous forum posts like [this one](https://unix.stackexchange.com/questions/330366/how-can-i-run-a-graphical-application-in-a-container-under-wayland)
+Specific instructions to run the simulator depending on the chosen rendering engine can be found in [our wiki](https://github.com/uzh-rpg/rpg_esim/wiki).
 
 ## Acknowledgements
 
-Thank you to the [Robotics and Perception Group](https://rpg.ifi.uzh.ch/) for all of their hard work and open source implementations. 
+We thank Raffael Theiler and Dario Brescianini for their contributions to ESIM.
